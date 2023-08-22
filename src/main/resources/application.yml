@@ -2,3 +2,7 @@ spring:
   elasticsearch:
     uris: 127.0.0.1:9200
     connection-timeout: 10
+  datasource:
+    druid:
+      url: jdbc:es://127.0.0.1:9200
+      driver-class-name: org.elasticsearch.xpack.sql.jdbc.EsDriver

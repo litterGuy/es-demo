@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ga.litterguy.esjdbc.dao.PortalNewsDao">
+    <resultMap id="BaseResultMap" type="ga.litterguy.domain.PortalNews">
+        <id column="id" property="id" />
+        <result column="channelName" property="channelName" />
+        <result column="title" property="title" />
+        <result column="description" property="description" />
+        <result column="link" property="link" />
+        <result column="content" property="content" />
+        <result column="date" property="date" />
+        <result column="author" property="author" />
+        <result column="thumbnail" property="thumbnail" />
+        <result column="emotion" property="emotion" />
+        <result column="inputDate" property="inputDate" />
+        <result column="province" property="province" />
+        <result column="city" property="city" />
+        <result column="sourceType" property="sourceType" />
+        <result column="cleanFlag" property="cleanFlag" />
+        <result column="readFlag" property="readFlag" />
+    </resultMap>
+
+    <select id="getList" resultMap="BaseResultMap">
+        select * from portal_news limit 10
+    </select>
+
+</mapper>

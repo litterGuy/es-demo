@@ -2,6 +2,7 @@ package ga.litterguy.controller;
 
 import ga.litterguy.dao.PortalDao;
 import ga.litterguy.domain.PortalNews;
+import ga.litterguy.esjdbc.dao.PortalNewsDao;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.springframework.data.domain.Page;
@@ -34,6 +35,8 @@ public class EsTestController {
     private ElasticsearchRestTemplate elasticsearchRestTemplate;
     @Resource
     private PortalDao portalDao;
+    @Resource
+    private PortalNewsDao portalNewsDao;
 
     @GetMapping("search")
     public Object search() {
@@ -41,6 +44,11 @@ public class EsTestController {
         SearchHits<PortalNews> search = elasticsearchRestTemplate.search(query, PortalNews.class);
         List<PortalNews> list = search.get().map(SearchHit::getContent).collect(Collectors.toList());
         return list;
+    }
+
+    @GetMapping("getEsJdbcList")
+    public Object getEsJdbcList() {
+        return portalNewsDao.getList();
     }
 
     @GetMapping("insert")
